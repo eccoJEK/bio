@@ -1,31 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifichiamo che l'oggetto CONFIG generato da config.js sia presente a schermo
   if (typeof CONFIG === "undefined") {
     console.error("Configurazione interrotta. Controlla la sintassi di config.js");
     return;
   }
 
-  // 1. Profilo Header (Aggiornato con il campo dinamico "sottotitolo")
+  // ==========================================
+  // INIEZIONE DEI COLORI DINAMICI (CSS VARIABLES)
+  // ==========================================
+  const root = document.documentElement;
+  if (CONFIG.colori) {
+    if (CONFIG.colori.anthracite) root.style.setProperty('--anthracite', CONFIG.colori.anthracite);
+    if (CONFIG.colori.coolGrey) root.style.setProperty('--cool-grey', CONFIG.colori.coolGrey);
+    if (CONFIG.colori.bananaYellow) root.style.setProperty('--banana-yellow', CONFIG.colori.bananaYellow);
+  }
+
+  // ==========================================
+  // INIEZIONE DATI TESTUALI E IMMAGINI
+  // ==========================================
+  // Header
   document.getElementById('site-title').innerText = CONFIG.titolo;
   document.getElementById('site-subtitle').innerText = CONFIG.sottotitolo;
 
-  // 2. Focus Card Principale
-  document.getElementById('card-tag').innerText = CONFIG.cardTag;
-  document.getElementById('card-text').innerText = CONFIG.cardTesto;
-  document.getElementById('card-link').href = CONFIG.cardLink;
+  // Focus Card
+  document.getElementById('card-tag').innerText = CONFIG.focusCard.tag;
+  document.getElementById('card-text').innerText = CONFIG.focusCard.testo;
+  document.getElementById('card-link').href = CONFIG.focusCard.link;
+  document.getElementById('track-image').style.backgroundImage = `url('${CONFIG.focusCard.immagine}')`;
 
-  // 3. Primo Portale Link
-  document.getElementById('nav-label-1').innerText = CONFIG.link1Label;
-  document.getElementById('nav-link-1').href = CONFIG.link1Url;
-  
-  // 4. Secondo Portale Link
-  document.getElementById('nav-label-2').innerText = CONFIG.link2Label;
-  document.getElementById('nav-link-2').href = CONFIG.link2Url;
+  // Diario / Essence Box
+  document.getElementById('diary-title').innerText = CONFIG.diario.titolo;
+  document.getElementById('diary-text').innerText = CONFIG.diario.testo;
 
-  // 5. Diario / Essence Box
-  document.getElementById('diary-title').innerText = CONFIG.diarioTitolo;
-  document.getElementById('diary-text').innerText = CONFIG.diarioTesto;
-
-  // 6. Architettura Base Footer
+  // Footer
   document.getElementById('site-version').innerText = CONFIG.versione;
+
+  // ==========================================
+  // RENDERING DINAMICO DEI BENTO LINKS
+  // ==========================================
+  const linksContainer = document.getElementById('bento-links-container');
+  linksContainer.innerHTML = ""; // Svuota l'HTML statico precedente
+
+  CONFIG.links.forEach(link => {
+    // Crea l'elemento ancora principal
+    const anchor = document.createElement('a');
+    anchor.href = link.url;
+    anchor.target = "_blank";
+    anchor.className = "nav-row";
+
+    // Label del testo
+    const labelSpan = document.createElement('span');
+    labelSpan.className = "nav-label";
+    labelSpan.innerText = link.label;
+
+    // Slashes estetiche laterali (le barre `//`)
+    const slashesSpan = document.createElement('span');
+    slashesSpan.className = "nav-slashes";
+    slashesSpan.innerText = "//";
+
+    // Costruisci e appendi la struttura
+    anchor.appendChild(labelSpan);
+    anchor.appendChild(slashesSpan);
+    linksContainer.appendChild(anchor);
+  });
 });
