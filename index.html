@@ -3,68 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>asterJEK — Inner World</title>
+  <title>JEK — Inner World</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <canvas id="space-canvas"></canvas>
+  <div class="bg-grid-pattern"></div>
 
-  <div class="magnetic-aura"></div>
-
-  <div id="art-cursor"></div>
-
-  <div class="viewport-container">
-    <div class="glass-monolith">
+  <div class="main-wrapper">
+    <div class="app-interface">
       
-      <header class="art-header">
-        <div class="avatar-wrapper">
-          <div class="abstract-avatar"></div>
-          <span class="live-signal"></span>
+      <div class="noise-overlay"></div>
+      
+      <header class="profile-header">
+        <div class="avatar-container">
+          <div class="inner-circle"></div>
+          <span class="pulse-dot"></span>
         </div>
-        <div class="brand-identity">
-          <h1>asterJEK</h1>
-          <p class="coordinates">45°04'N // 08°12'E</p>
+        <div class="intro-text">
+          <h1 id="site-title" class="glitch-title">//</h1>
+          <p id="site-subtitle" class="sub-thoughts">//</p>
         </div>
       </header>
 
-      <section class="expo-card">
-        <div class="artwork-frame">
-          <div class="image-lens"></div>
+      <section class="focus-card">
+        <div class="track-image-container">
+          <div class="track-image"></div>
         </div>
-        <div class="expo-details">
-          <span class="status-badge">NOW FOCUSING</span>
-          <h2>Ascolta l'ultimo frammento su YouTube</h2>
-          <a href="https://youtube.com/@asterJEK" target="_blank" class="action-trigger">
-            <span>ENTER CORE SPACE</span>
-          </a>
+        <div class="track-details">
+          <span id="card-tag" class="inner-tag">//</span>
+          <h2 id="card-text">//</h2>
+          <a id="card-link" href="#" target="_blank" class="liquid-btn">ENTER CORE</a>
         </div>
       </section>
 
-      <main class="portal-navigation">
-        <a href="https://youtube.com/@asterJEK" target="_blank" class="portal-row">
-          <span class="portal-txt">YouTube Channel</span>
-          <span class="portal-vector">➔</span>
+      <main class="navigation-links">
+        <a id="nav-link-1" href="#" target="_blank" class="nav-row">
+          <span id="nav-label-1" class="nav-label">//</span>
+          <span class="nav-slashes">//</span>
         </a>
 
-        <a href="#" target="_blank" class="portal-row">
-          <span class="portal-txt">Instagram Feed</span>
-          <span class="portal-vector">➔</span>
+        <a id="nav-link-2" href="#" target="_blank" class="nav-row">
+          <span id="nav-label-2" class="nav-label">//</span>
+          <span class="nav-slashes">//</span>
         </a>
 
-        <div class="essence-box">
-          <div class="essence-line"></div>
-          <p>"Il giallo emerge solo dove il silenzio si fa più profondo. Nuove tracce in fase di scrittura, tasselli di un mondo ancora da decifrare."</p>
+        <div class="inner-thoughts-box">
+          <div class="info-header">
+            <span class="terminal-dash"><span id="diary-title">//</span><span class="blinking-cursor">_</span></span>
+          </div>
+          <p id="diary-text" class="quote">//</p>
         </div>
       </main>
 
-      <footer class="monolith-footer">
-        <p>asterjek // abstract framework 2026</p>
+      <footer class="app-version">
+        <p id="site-version">//</p>
       </footer>
 
     </div>
   </div>
 
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
