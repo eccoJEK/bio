@@ -1,0 +1,346 @@
+:root {
+  --anthracite: 57, 61, 71;
+  --cool-grey: 140, 146, 172;
+  --banana-yellow: 254, 221, 0;
+  --img-track: url('https://images.unsplash.com/photo-1550064824-8f993041ffd3?q=80&w=1000');
+}
+
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('./assets/fonts/dm-serif-display/dm-serif-display-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./assets/fonts/space-grotesk/space-grotesk-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #0d0e11; /* Sfondo quasi nero per un contrasto drammatico con il giallo */
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* LIVELLO 1: CANVAS ANIMATO */
+#space-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* LIVELLO 2: AURA MAGNETICA GIALLA (Pompata e visibilissima) */
+.magnetic-aura {
+  position: fixed;
+  width: 600px; /* Più grande */
+  height: 600px;
+  /* Opacità alzata dallo 0.1 allo 0.25 per renderla nettamente visibile */
+  background: radial-gradient(circle, rgba(var(--banana-yellow), 0.25) 0%, rgba(13,14,17,0) 65%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  animation: auraFloat 6s ease-in-out infinite alternate; /* Più dinamica */
+}
+
+@keyframes auraFloat {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(-45%, -53%) scale(1.2); opacity: 1; }
+}
+
+/* CONTENITORE CENTRALE */
+.viewport-container {
+  position: relative;
+  z-index: 3;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* LIVELLO 3: IL MONOLITE DI VETRO SFOCATO */
+.glass-monolith {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(20, 21, 26, 0.75); /* Più scuro per staccare dal bagliore dietro */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.12); /* Bordo più acceso */
+  border-radius: 32px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: monolithReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes monolithReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* APPARIZIONE IN SEQUENZA */
+.art-header, .expo-card, .portal-row, .essence-box, .monolith-footer {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: itemRevealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.art-header { animation-delay: 0.3s; }
+.expo-card  { animation-delay: 0.45s; }
+.portal-row:nth-child(1) { animation-delay: 0.55s; }
+.portal-row:nth-child(2) { animation-delay: 0.65s; }
+.essence-box { animation-delay: 0.75s; }
+.monolith-footer { animation-delay: 0.85s; }
+
+@keyframes itemRevealUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER COMPONENTS */
+.art-header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.abstract-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(var(--cool-grey), 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.live-signal {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 9px;
+  height: 9px;
+  background-color: rgb(var(--banana-yellow));
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgb(var(--banana-yellow));
+  animation: signalPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes signalPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.brand-identity h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.brand-identity .coordinates {
+  font-size: 0.7rem;
+  color: rgba(var(--cool-grey), 0.6);
+  margin-top: 0.4rem;
+  letter-spacing: 2px;
+}
+
+/* EXPO CARD */
+.expo-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 1.25rem;
+  margin-bottom: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.artwork-frame {
+  width: 100%;
+  height: 160px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+}
+
+.image-lens {
+  width: 100%;
+  height: 100%;
+  background: var(--img-track) center/cover no-repeat;
+  filter: grayscale(0.8) contrast(1.2); /* Leggermente meno grigia per dare colore */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+@media (hover: hover) {
+  .expo-card:hover {
+    border-color: rgba(var(--banana-yellow), 0.6);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .expo-card:hover .image-lens {
+    transform: scale(1.04);
+    filter: grayscale(0) contrast(1.1);
+  }
+}
+.expo-card:active {
+  transform: scale(0.98);
+}
+
+.status-badge {
+  font-size: 0.65rem;
+  color: rgb(var(--banana-yellow));
+  letter-spacing: 3px;
+}
+
+.expo-card h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* BOTTONE ACTION */
+.action-trigger {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .action-trigger:hover {
+    border-color: rgb(var(--banana-yellow));
+    color: #000000;
+    background-color: rgb(var(--banana-yellow));
+    box-shadow: 0 10px 25px rgba(var(--banana-yellow), 0.4);
+  }
+}
+.action-trigger:active {
+  transform: scale(0.95);
+}
+
+/* LINKS */
+.portal-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.portal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.2rem 1.5rem;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-vector {
+  font-size: 0.9rem;
+  color: rgba(var(--cool-grey), 0.6);
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+  .portal-row:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.06);
+    padding-left: 1.6rem;
+  }
+  .portal-row:hover .portal-vector {
+    color: rgb(var(--banana-yellow));
+    transform: translateX(4px);
+  }
+}
+
+.portal-txt {
+  font-size: 0.95rem;
+}
+
+/* DIARIO */
+.essence-box {
+  position: relative;
+  padding: 1.2rem 0.5rem 0 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.essence-line {
+  width: 30px;
+  height: 1px;
+  background-color: rgb(var(--banana-yellow));
+  margin: 0 auto 1rem auto;
+}
+
+.essence-box p {
+  font-size: 0.85rem;
+  color: rgba(var(--cool-grey), 0.9);
+  line-height: 1.5;
+  text-align: center;
+  font-style: italic;
+}
+
+.monolith-footer {
+  margin-top: 2.2rem;
+  text-align: center;
+}
+
+.monolith-footer p {
+  font-size: 0.65rem;
+  color: rgba(var(--cool-grey), 0.4);
+  letter-spacing: 2px;
+}
+
+/* LIVELLO MAX: CURSORE PERSONALIZZATO SFUMATO (Evidente ed elettrico) */
+#art-cursor {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(var(--banana-yellow), 0.4); /* Più opaco */
+  border: 1.5px solid rgb(var(--banana-yellow));
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .viewport-container { padding: 1rem 0.6rem; }
+  .glass-monolith { padding: 1.8rem 1.25rem; border-radius: 28px; }
+  .artwork-frame { height: 130px; }
+}
