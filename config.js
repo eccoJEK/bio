@@ -1,19 +1,40 @@
 const CONFIG = {
+  // --- IMPOSTAZIONI DI BASE ---
   titolo: "JEK",
-  sottotitolo: "trying to figure out how to put music together",
+  sottotitolo: "trying to make notes fit together.",
+  versione: "JEK // index v1.2",
 
-  cardTag: "NOW FOCUSING",
-  cardTesto: "stream my latest song now",
-  cardLink: "https://youtube.com/@asterJEK",
+  // --- PALETTE COLORI CUSTOM (In formato RGB senza "rgb()") ---
+  // In questo modo puoi cambiare l'anima del sito direttamente da qui
+  colori: {
+    anthracite: "30, 33, 41",     // Sfondo scuro principale
+    coolGrey: "140, 146, 172",    // Testi e dettagli secondari
+    bananaYellow: "254, 221, 0"   // Colore accento (Led, bottoni, hover)
+  },
 
-  link1Label: "youtube channel",
-  link1Url: "https://youtube.com/@asterJEK",
+  // --- FOCUS CARD (La release principale) ---
+  focusCard: {
+    tag: "LATEST RELEASE",
+    testo: "NOME SINGOLO DOPE",
+    link: "https://spotify.com/...",
+    // Incolla qui l'URL dell'immagine di copertina
+    immagine: "https://images.unsplash.com/photo-1550064824-8f993041ffd3?q=80&w=1000"
+  },
 
-  link2Label: "instagram feed",
-  link2Url: "https://instagram.com/tuo_username",
+  // --- GRIGLIA DI LINK (Bento Style) ---
+  // Puoi aggiungere o rimuovere quanti oggetti vuoi, il sistema li genererà da solo
+  links: [
+    /*{ label: "spotify profile", url: "https://spotify.com/..." },
+    { label: "apple music", url: "https://apple.com/..." },*/
+    { label: "youtube", url: "https://youtube.com/@eccoJEK"},
+    { label: "soundcloud", url: "https://soundcloud.com/eccoJEK" },
+    { label: "instagram", url: "https://instagram.com/eccoJEK" },
+    { label: "tiktok", url: "https://tiktok.com/eccoJEK" }
+  ],
 
-  diarioTitolo: "LOG_ESSENCE",
-  diarioTesto: `Il giallo emerge solo dove il silenzio si fa più profondo. Nuove tracce in fase di scrittura, tasselli di un mondo ancora da decifrare.`,
-
-  versione: "JEK // links page 2026"
+  // --- BOX DIARIO / PENSIERI ---
+  diario: {
+    titolo: "LIVE_LOG",
+    testo: "setting up the social accounts in order to start publishing."
+  }
 };
