@@ -1,0 +1,58 @@
+================================================================================
+          JEK CORE SYSTEM — MANUALE E DOCUMENTAZIONE COMPONENTI v2.1.0
+================================================================================
+
+Questo file serve come guida rapida per configurare e gestire i blocchi del 
+sito all'interno del file "config.js". Ogni componente va inserito nell'array 
+"blocchi" rispettando la sintassi JavaScript.
+
+--------------------------------------------------------------------------------
+TABELLA COMPONENTI E VARIABILI DISPONIBILI
+--------------------------------------------------------------------------------
+
++-------------------+----------------------------------+-----------------------------------------------------------+
+| NOME COMPONENTE   | VARIABILI ACCETTATE              | COSA FA / DESCRIZIONE                                     |
++-------------------+----------------------------------+-----------------------------------------------------------+
+| focus-card        | tag, testo, url, immagine        | Box principale in evidenza con copertina e bottone        |
+|                   |                                  | liquid-btn "ENTER CORE". Sezione di rilascio traccia.     |
++-------------------+----------------------------------+-----------------------------------------------------------+
+| bento-link        | label, url                       | Riga di navigazione standard. Reattiva all'hover          |
+|                   |                                  | con comparsa delle barre inclinate "//" gialle.           |
++-------------------+----------------------------------+-----------------------------------------------------------+
+| bento-image       | url_immagine, altezza, url       | Banner visivo a tutta larghezza. La variabile "altezza"   |
+|                   |                                  | e la variabile "url" (per renderlo cliccabile) sono opt.  |
++-------------------+----------------------------------+-----------------------------------------------------------+
+| bento-countdown   | tag, titolo, data_target,        | Timer dinamico per i drop. Formato "data_target" obblig.: |
+|                   | testo_scaduto                    | "AAAA-MM-GGTHH:MM:SS" (Es: "2026-07-24T00:00:00").        |
++-------------------+----------------------------------+-----------------------------------------------------------+
+| bento-alert       | testo                            | Box di notifica compatto con bordi tratteggiati           |
+|                   |                                  | evidenziati nel colore giallo del brand JEK.             |
++-------------------+----------------------------------+-----------------------------------------------------------+
+
+--------------------------------------------------------------------------------
+ESEMPI DI CONFIGURAZIONE PRONTI DA COPIARE IN "config.js"
+--------------------------------------------------------------------------------
+
+Sintassi base per aggiungere un blocco nell'array:
+
+    {
+      nome: "bento-countdown",
+      tag: "NEXT DROP",
+      titolo: "Nuovo singolo in arrivo",
+      data_target: "2026-07-24T00:00:00",
+      testo_scaduto: "OUT NOW"
+    },
+    {
+      nome: "bento-image",
+      url_immagine: "./assets/images/banner.jpg",
+      altezza: "120px",
+      url: "https://spotify.com"
+    },
+    {
+      nome: "bento-alert",
+      testo: "Attenzione: Il server andrà in manutenzione stanotte."
+    }
+
+================================================================================
+SISTEMA MODULARE ATTIVO — NON MODIFICARE I FILE "components.js" O "script.js"
+================================================================================
